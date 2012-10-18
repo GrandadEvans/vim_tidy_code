@@ -65,6 +65,12 @@ function! Tidy_code()
 
 	" See to the last part of else
 	silent! :%s/\(^\s*\)else\s*{/\1else\r\1{
+
+	" See to try
+	silent! :%s/\(\s*\)try\s*{/\1try\r\1{
+
+	" See to the Catch
+	silent! :%s/\(.*\)\(}\)\s\=catch\s\=(\(.*\))\s\=\({\)/\1\2\r\1catch (\3)\r\1\4
     " Explained
     "    :%s      - start the substitution
     "    \(\s*\)  - match any space before the function call
