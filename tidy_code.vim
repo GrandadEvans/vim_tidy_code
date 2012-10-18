@@ -39,7 +39,14 @@
 "                plugin dir.
 "----------------------------------------------------------------------------------
 "
-function! Tidy_code()
+"    Contents
+"    $CLASS
+"    $TABS_TO_SPACES
+"    $SPACE_BETWEEN_KEYWORDS_AND_PARENS
+"    $REPLACE_!_WITH_FALSE
+"    $TRIM_TRAILING_SPACES
+"    
+    function! Tidy_code()
     " TODO: find a way of identifying the filetype and use if else etc to
     "     seperate the sections and perfrom the relevant clean-up on the
     "     different filetypes
@@ -100,7 +107,7 @@ function! Tidy_code()
     "     {          - The opening curly brace
     "-------------------------------------------------------------------
 
-    " class:
+	" $CLASS
     "    names should be PascalCase
     "        that is camelCase with an uppercase first character
     " TODO: update the calls to the classes as well as the class/function
@@ -123,7 +130,7 @@ function! Tidy_code()
     "    to do
     "-----------------------------------------------------------------------
     "
-    " Use 4 spaces instead of tabs
+    " $TABS_TO_SPACES
     silent! :%s/\t/    /g
     " Explain:
     "    This one is simple:
@@ -133,7 +140,7 @@ function! Tidy_code()
     "    just the first instance
     "-----------------------------------------------------------------------
 
-    " DO NOT put parenthesis next to keywords
+    " $SPACES_BETWEEN_KEYWORDS_AND_PARENS
     " but instead seperate them with a space
     silent! :%s/\(while\|if\|for\|do\|switch\|foreach\|require\|throw\|catch\|declare\|function\|require_once\|include\|include_once\|return\|try\)(/\1 (
     " Explain:
@@ -155,6 +162,7 @@ function! Tidy_code()
     " (            - Then the closing paren.
     " -----------------------------------------------------------------------
     "
+	" $REPLACE_!_WITH FALSE
     " Boolean checks on statements should ask if make sure that the function
     " does not retuen a false result as such
     " if (FALSE != funct())
@@ -170,7 +178,11 @@ function! Tidy_code()
     "
     " -----------------------------------------------------------------------
 	"
+	" $TRIM_TRAILING_SPACES
 	" Remove space at the end of the lines
 	silent! :%s/\s*$
 	
+	" Insert 2 blank lines before content items
+	" As well as adding a line up = signs above and below the Content title
+	silent! :%s/\(\s*\)\/\/\s*\(\$\<[A-Z]*\>\)\s*$/\r\r\1\/\* ==============================\r\1        \2\r\1   ============================== \*\/\r
 endfunction
