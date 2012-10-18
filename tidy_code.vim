@@ -35,7 +35,7 @@
 "                http://www.dagbladet.no/development/phpcodingstandard
 "                http://news.php.net/php.standards/2
 "
-" Install:         This script should ideally be copied into yourvim profile's
+" Install:       This script should ideally be copied into yourvim profile's
 "                plugin dir.
 "----------------------------------------------------------------------------------
 "
@@ -45,15 +45,15 @@ function! Tidy_code()
     "     different filetypes
     "     
     "
-    " function naming convention
+    " keyword naming convention
     "     replace:
     "
-    "     ^<optional space>function<space>function_name<optional space>()<optional
+    "     ^<optional space><keyword><space><possible function_name etc><optional space>()<optional
     "     spaces>{<optional space><new line>
     "
     "     with
     "
-    "     function function_name()<new line><inherited space>{
+    "     <keyword> <possible function_name etc>()<new line><inherited space>{
     "
 	silent! :%s/\(^\s*\)\<\(while\|if\|for\|do\|switch\|foreach\|require\|throw\|catch\|declare\|function\|require_once\|include\|include_once\|return\|try]\)\s\+\(.*\)\s\=(\(.*\))\s*{/\1\2 \3(\4)\r\1{
 	
@@ -162,4 +162,9 @@ function! Tidy_code()
     "
     " I think I will have a indenter here
     "
+    " -----------------------------------------------------------------------
+	"
+	" Remove space at the end of the lines
+	silent! :%s/\s*$
+	
 endfunction
