@@ -5,7 +5,7 @@
 " Maintainer:    John Evans <john@evanswebdesign.co.uk>
 " Last Modified: 18 October 2012 by John Evans
 "
-" Copyright:     (C) 2004-2005 Dave Vehrs
+" Copyright:     (C) 20012 John Evans
 "
 "                This program is free software; you can redistribute it and/or
 "                modify it under the terms of the GNU General Public License as
